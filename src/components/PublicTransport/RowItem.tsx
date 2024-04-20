@@ -10,11 +10,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as Actions from "../../store/slices/Public.slice";
-import {
-  PayloadType,
-  PublicTransportPayloadType,
-  RowProps,
-} from "../../types/types";
+import { PublicTransportPayloadType, RowProps } from "../../types/types";
 import "../Household/Household.css";
 
 const RowItem = (props: RowProps) => {
