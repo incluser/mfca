@@ -1,0 +1,40 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 50px;
+  margin-bottom: 20px;
+}
+
+.row span {
+  flex: 0.5;
+}
+
+.row input {
+  flex: 0.4;
+}
+
+.row button {
+  flex: 0.2;
+}
+
+@media (max-width: 710px) {
+  .row span {
+    flex: 1;
+  }
+
+  .row input {
+    flex: 1;
+  }
+
+  .row button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,91 @@
+.container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.innercointainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80vw;
+  margin: 20px;
+  height: fit-content;
+}
+.actions {
+  display: flex;
+  gap:20px;
+  align-items: center;
+  justify-content: end;
+  padding: 20px;
+}
+.tabicons {
+  min-width: 30px;
+  width: 50px;
+}
+
+.containercontent {
+  height: 450px;
+}
+
+.containernext {
+  display: flex;
+  gap: 16px;
+}
+
+.containerbody {
+  width: 70%;
+  border: 1px solid #dfdfdf;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: rgb(251, 251, 251);
+}
+
+.containerresult {
+  border: 1px solid #dfdfdf;
+  padding: 5px;
+  border-radius: 30px;
+  width: 30%;
+
+  padding: 20px;
+}
+
+@media (max-width: 1100px) {
+  .tabicons {
+    width: 40px;
+  }
+  .innercointainer {
+    max-width: 80vw;
+  }
+}
+
+@media (max-width: 1100px) {
+  .containernext {
+    flex-direction: column;
+  }
+  .containerbody,
+  .containerresult {
+    width: 100%;
+  }
+  .innercointainer {
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  .tabslist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .innercointainer {
+    width: 95vw;
+  }
+}
+
