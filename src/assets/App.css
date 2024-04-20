@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+
 }
 
 .innercointainer {
@@ -13,11 +13,10 @@
   flex-direction: column;
   width: 80vw;
   margin: 20px;
-  height: fit-content;
 }
 .actions {
   display: flex;
-  gap:20px;
+  gap: 20px;
   align-items: center;
   justify-content: end;
   padding: 20px;
@@ -88,4 +87,3 @@
     width: 95vw;
   }
 }
-
