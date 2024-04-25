@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AirplaneState } from "../../types/types";
 import { distances } from "../../constants/static";
+import { AirplaneState, Flight } from "../../types/types";
 
 const initialState: AirplaneState = {
   flights: [
     {
       distance: 0,
-      from: "Astana",
-      to: "Astana",
+      from: "",
+      to: "",
       flightClass: "economy",
       tripType: "one-way",
       trips: 1,
@@ -23,25 +23,42 @@ const emissionFactors: Record<string, number> = {
   first: 0.123 * 4,
 };
 
+const calculateEmission = (flight: Flight) => {
+  const emission =
+    (flight.distance * emissionFactors[flight.flightClass]) / 1000;
+  return flight.tripType === "round-trip"
+    ? emission * flight.trips * 2
+    : emission * flight.trips;
+};
+
+const calculateDistance = (flight: Flight) => {
+  const distanceObj = distances.find(
+    (d) => d.from === flight.from && d.to === flight.to
+  );
+  if (distanceObj) {
+    flight.distance = distanceObj.distance;
+  }
+};
+
+const calculateTotalEmission = (state: {
+  allEmission: number;
+  flights: Array<Flight>;
+}) => {
+  state.allEmission = state.flights.reduce((acc, flight) => {
+    return acc + calculateEmission(flight);
+  }, 0);
+};
+
 export const AirplaneSlice = createSlice({
   name: "airplane",
   initialState,
   reducers: {
     setFlight: (state, action) => {
       const flight = action.payload;
-      const distanceObj = distances.find(
-        (d) => d.from === flight.from && d.to === flight.to
-      );
-      if (distanceObj) {
-        flight.distance = distanceObj.distance;
-      }
-      const emission =
-        (flight.distance * emissionFactors[flight.flightClass]) / 1000;
-      flight.emissionResult =
-        flight.tripType === "round-trip"
-          ? emission * flight.trips * 2
-          : emission * flight.trips;
+      calculateDistance(flight);
+      flight.emissionResult = calculateEmission(flight);
       state.flights = [...state.flights, flight];
+      calculateTotalEmission(state);
     },
     removeFlight: (state, action) => {
       if (action.payload !== 0) {
@@ -49,6 +66,7 @@ export const AirplaneSlice = createSlice({
           (_, index) => index !== action.payload
         );
       }
+      calculateTotalEmission(state);
     },
     updateFlight: (state, action) => {
       state.flights[action.payload.index] = {
@@ -56,46 +74,13 @@ export const AirplaneSlice = createSlice({
         ...action.payload.flight,
       };
       const flight = state.flights[action.payload.index];
-      if (flight.from && flight.to) {
-        const distanceObj = distances.find(
-          (d) => d.from === flight.from && d.to === flight.to
-        );
-        if (distanceObj) {
-          flight.distance = distanceObj.distance;
-        }
-      }
-      const emission =
-        (flight.distance * emissionFactors[flight.flightClass]) / 1000;
-      flight.emissionResult =
-        flight.tripType === "round-trip"
-          ? emission * flight.trips * 2
-          : emission * flight.trips;
-
-      state.allEmission = state.flights.reduce((acc, flight) => {
-        return acc + flight.emissionResult;
-      }, 0);
-    },
-    calculateDistance: (state, action) => {
-      const flight = state.flights[action.payload.index];
-      const distanceObj = distances.find(
-        (d) => d.from === flight.from && d.to === flight.to
-      );
-      if (distanceObj) {
-        flight.distance = distanceObj.distance;
-      }
+      calculateDistance(flight);
+      flight.emissionResult = calculateEmission(flight);
+      calculateTotalEmission(state);
     },
     calculateEmissionAirplane: (state) => {
-      const emissionFactors = {
-        economy: 0.123,
-        business: 0.123 * 2.5,
-        first: 0.123 * 4,
-      };
       state.allEmission = state.flights.reduce((acc, flight) => {
-        const emission =
-          (flight.distance * emissionFactors[flight.flightClass]) / 1000;
-        return flight.tripType === "round-trip"
-          ? parseFloat((acc + emission * flight.trips * 2).toFixed(1))
-          : parseFloat((acc + emission * flight.trips).toFixed(1));
+        return acc + calculateEmission(flight);
       }, 0);
     },
     resetDataAirplane: (state) => {
@@ -108,7 +93,6 @@ export const {
   removeFlight,
   calculateEmissionAirplane,
   updateFlight,
-  calculateDistance,
   resetDataAirplane,
 } = AirplaneSlice.actions;
 

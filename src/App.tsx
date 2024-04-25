@@ -6,18 +6,17 @@ import {
   TabPanels,
   Tabs,
 } from "@chakra-ui/react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./assets/App.css";
 import Lang from "./components/Lang/Lang";
+import ResultItem from "./components/Result/ResultItem";
 import { TabsData } from "./constants/static";
 import { calculateEmissionAirplane, resetDataAirplane } from "./store/slices/Airplane.slice";
-import { calculateEmissionPublic, resetDataPublic } from "./store/slices/Public.slice";
 import { calculateEmissionHouseHold, resetDataHousehold } from "./store/slices/Household.slice";
-import { RootState } from "./store/store";
-import React from "react";
-import { calculateEmissionSecondary, resetDataSecondary } from "./store/slices/Secondary.slice";
 import { calculateEmissionPrivate, resetDataPrivate } from "./store/slices/Private.slice";
-import ResultItem from "./components/Result/ResultItem";
+import { calculateEmissionPublic, resetDataPublic } from "./store/slices/Public.slice";
+import { RootState } from "./store/store";
 function App() {
   const dispatch = useDispatch();
   const initialState = {
@@ -40,7 +39,7 @@ function App() {
     dispatch(calculateEmissionAirplane());
     dispatch(calculateEmissionPublic());
     dispatch(calculateEmissionHouseHold());
-    dispatch(calculateEmissionSecondary());
+    // dispatch(calculateEmissionSecondary());
     dispatch(calculateEmissionPrivate());
     setResults({
       airplane: airplaneEmission,
@@ -64,7 +63,7 @@ function App() {
     dispatch(resetDataHousehold())
     dispatch(resetDataPrivate())
     dispatch(resetDataPublic())
-    dispatch(resetDataSecondary())
+    // dispatch(resetDataSecondary())
     setResetKey(prev => prev + 1)
 
 
@@ -138,7 +137,7 @@ function App() {
               <ResultItem text="Private Transport" value={results.private} />
               <ResultItem text="Airplane" value={results.airplane} />
               <ResultItem text="Public Transport" value={results.public} />
-              <ResultItem text="Secondary" value={results.secondary} />
+              {/* <ResultItem text="Secondary" value={results.secondary} /> */}
               <ResultItem text="Overall" value={results.secondary + results.airplane + results.household + results.public + results.private} />
             </div>
           </div>

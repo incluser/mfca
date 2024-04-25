@@ -6,7 +6,7 @@ const ResultItem: React.FC<ResultItemProps> = ({ text, value }) => {
     return (
         <div className="rowresult">
             <span>{text}</span>
-            <p>{value} tCO₂</p>
+            <p>{value.toFixed(2)} kg CO₂</p>
         </div>
     )
 }

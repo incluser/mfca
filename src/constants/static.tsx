@@ -3,7 +3,7 @@ import Car from "../assets/img/car-svgrepo-com.svg";
 import Plane from "../assets/img/airplane-departure-svgrepo-com.svg";
 import House from "../assets/img/house-svgrepo-com.svg";
 import Train from "../assets/img/train-svgrepo-com.svg";
-import Secondary from "../assets/img/money-bag-svgrepo-com.svg";
+// import Secondary from "../assets/img/money-bag-svgrepo-com.svg";
 
 import * as Components from "../components/index";
 
@@ -32,15 +32,15 @@ export const TabsData: Tabs = [
     img: Train,
     Component: Components.Public,
   },
-  {
-    id: 4,
-    text: "Secondary",
-    img: Secondary,
-    Component: Components.Secondary,
-  },
+  // {
+  //   id: 4,
+  //   text: "Secondary",
+  //   img: Secondary,
+  //   Component: Components.Secondary,
+  // },
 ];
 
-export const Langs: string[] = ["EN"]; //"RU", "KZ"
+export const Langs: string[] = ["EN", "RU", "KZ"];
 
 export const DistanceMeasure: DistanceMeasures = [
   {
@@ -193,7 +193,7 @@ export const distances: DistanceType = [
   { from: "Astana", to: "Kokshetau", distance: 286.83 },
   { from: "Astana", to: "Kostanay", distance: 592.89 },
   { from: "Astana", to: "Pavlodar", distance: 408.89 },
-  { from: "Astana", to: "Petropavlovsk", distance: 444.87 },  
+  { from: "Astana", to: "Petropavlovsk", distance: 444.87 },
   { from: "Astana", to: "Semey", distance: 622.46 },
   { from: "Astana", to: "Taldykorgan", distance: 836.2 },
   { from: "Astana", to: "Taraz", distance: 909.41 },
@@ -507,3 +507,12 @@ export const distances: DistanceType = [
   { from: "Shymkent", to: "Oskemen", distance: 1313.94 },
   { from: "Shymkent", to: "Shymkent", distance: 0 },
 ];
+
+
+
+
+
+
+// Email Address: onetouchx9@gmail.com
+
+// Authentication Token: ShV6fdBqNK3sx9gDtaSCN8j9

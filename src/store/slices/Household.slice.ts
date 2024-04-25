@@ -30,7 +30,7 @@ const initialState: HouseHoldState = {
 };
 
 const emissionFactors = {
-  electricity: 0.0527,
+  electricity: 0.25,
   naturalgas: 0.0184,
   biomass: 0.0025,
   coal: 0.094,
@@ -39,10 +39,10 @@ const emissionFactors = {
 };
 
 const conversionFactors = {
-  kWh: 1,
-  kg: 2,
-  "m³": 3,
-  litres: 4,
+  kWh: 3,
+  kg: 36,
+  "m³": 28,
+  litres: 28,
 };
 
 export const calculateEmission = (state: HouseHoldState) => {
@@ -69,7 +69,7 @@ export const calculateEmission = (state: HouseHoldState) => {
     emissionFactors.lpg *
     conversionFactors[state.lpg.measure];
 
-  return parseFloat(totalEmission.toFixed(1));
+  return totalEmission;
 };
 
 export const HouseHoldSlice = createSlice({

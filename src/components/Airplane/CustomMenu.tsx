@@ -27,7 +27,7 @@ const CustomMenu: React.FC<CustomMenuProps> = ({
   showDropdownIcon = true,
   onChange,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [selectedOption, setSelectedOption] = useState<number | string>(placeholder);
 
   const handleSelectOption = (option: string | number) => {
     setSelectedOption(option);

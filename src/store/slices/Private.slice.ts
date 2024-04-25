@@ -43,7 +43,7 @@ const calculateEmissionPrivateHelper = (state: PrivateState) => {
     ((state.motorcycle.distance * conversionFactors[state.motorcycle.measure]) /
       100) *
     emissionFactors.motorcycle[state.motorcycle.fuel];
-  return parseFloat(Number(carEmission + motorcycleEmission).toFixed(1));
+  return carEmission + motorcycleEmission;
 };
 
 export const PrivateSlice = createSlice({

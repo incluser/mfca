@@ -176,3 +176,4 @@ export type ResultItemProps = {
   text: string;
   value: number;
 };
+  

@@ -42,10 +42,8 @@ const calculateEmissionPublicHelper = (state: PublicState) => {
   const subwayEmission =
     state.subway.distance * conversionFactors[state.subway.measure] * 0.038;
 
-  return parseFloat(
-    Number(
-      busEmission + trainEmission + taxiEmission + tramEmission + subwayEmission
-    ).toFixed(1)
+  return (
+    busEmission + trainEmission + taxiEmission + tramEmission + subwayEmission
   );
 };
 export const PublicSlice = createSlice({

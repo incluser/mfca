@@ -58,16 +58,12 @@ export const SecondarySlice = createSlice({
       );
     },
     calculateEmissionSecondary: (state) => {
-      state.emissionResult = parseFloat(
-        Object.keys(state)
-          .reduce(
-            (acc, field) =>
-              acc +
-              (state[field as keyof SecondaryState] *
-                carbonCoefficients[field as keyof SecondaryState] || 0),
-            0
-          )
-          .toFixed(1)
+      state.emissionResult = Object.keys(state).reduce(
+        (acc, field) =>
+          acc +
+          (state[field as keyof SecondaryState] *
+            carbonCoefficients[field as keyof SecondaryState] || 0),
+        0
       );
     },
     resetDataSecondary: (state) => {

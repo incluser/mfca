@@ -9,8 +9,8 @@ const Lang = () => {
       <MenuButton
         as={Button}
         colorScheme="blue"
-        padding={10}
-        borderRadius={30}
+        padding={30}
+        borderRadius={10}
         bg="#c8e9f9"
         color="black"
       >
