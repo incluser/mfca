@@ -90,6 +90,8 @@ export type AirplaneState = {
     distance: number;
     from: string;
     to: string;
+    fromCity: string;
+    toCity: string;
     flightClass: "economy" | "business" | "first";
     tripType: "one-way" | "round-trip";
     trips: number;
@@ -176,4 +178,3 @@ export type ResultItemProps = {
   text: string;
   value: number;
 };
-  

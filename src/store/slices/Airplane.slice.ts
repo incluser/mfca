@@ -8,6 +8,8 @@ const initialState: AirplaneState = {
       distance: 0,
       from: "",
       to: "",
+      fromCity: "",
+      toCity: "",
       flightClass: "economy",
       tripType: "one-way",
       trips: 1,
@@ -74,7 +76,6 @@ export const AirplaneSlice = createSlice({
         ...action.payload.flight,
       };
       const flight = state.flights[action.payload.index];
-      calculateDistance(flight);
       flight.emissionResult = calculateEmission(flight);
       calculateTotalEmission(state);
     },
