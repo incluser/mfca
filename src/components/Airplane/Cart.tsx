@@ -80,6 +80,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
       const fromCity = data.data.attributes.from_airport.city;
       const toCity = data.data.attributes.to_airport.city;
       dispatch(updateFlight({ index, flight: { fromCity, toCity } }));
+      setError(null);
       return data.data.attributes.kilometers;
     } catch (error) {
       setError("Invalid IATA code")
