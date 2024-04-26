@@ -7,9 +7,9 @@ import kz from "./constants/kz.json";
 
 i18n.use(initReactI18next).init({
   resources: {
-    en: { translation: en },
-    ru: { translation: ru },
-    kz: { translation: kz },
+    EN: { translation: en },
+    RU: { translation: ru },
+    KZ: { translation: kz },
   },
   lng: "en",
   fallbackLng: "en",

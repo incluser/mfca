@@ -40,7 +40,7 @@ export const TabsData: Tabs = [
   // },
 ];
 
-export const Langs: string[] = ["en", "ru", "kz"];
+export const Langs: string[] = ["EN", "RU", "KZ"];
 
 export const DistanceMeasure: DistanceMeasures = [
   {
