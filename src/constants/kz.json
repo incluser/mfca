@@ -23,6 +23,7 @@
   "Small": "Кіші",
   "Medium": "Орташа",
   "Large": "Үлкен",
+  "litres": "литр",
   "Motorcycle Fuel Type": "Мотоцикл топырағының түрі",
   "one-way": "бір жақты",
   "round-trip": "болып отырған",
@@ -65,5 +66,6 @@
   "To": "Қайда",
   "Flight": "Ұшу",
   "Class": "Класс",
-  "Passengers": "Жолаушылар"
+  "Passengers": "Жолаушылар",
+  "Invalid IATA code":"Жарамсыз IATA коды"
 }
