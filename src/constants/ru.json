@@ -52,6 +52,7 @@
   "Insurance": "Страхование",
   "Other Legal Services": "Другие юридические услуги",
   "Overall": "Итого",
+  "litres": "литры",
   "Emission Results": "Результаты выбросов",
   "Reset": "Сбросить",
   "Calculate": "Рассчитать",
@@ -63,7 +64,8 @@
   "Arrival IATA code": "Код IATA прибытия",
   "From": "Откуда",
   "To": "Куда",
-  "Flight":"Полет",
-  "Class":"Класс",
-  "Passengers":"Пассажиры"
+  "Flight": "Полет",
+  "Class": "Класс",
+  "Passengers": "Пассажиры",
+  "Invalid IATA code": "Неверный код IATA"
 }

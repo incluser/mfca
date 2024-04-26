@@ -22,7 +22,6 @@ const initialState: SecondaryState = {
   emissionResult: 0,
 };
 
-
 export const SecondarySlice = createSlice({
   name: "secondary",
   initialState,
@@ -58,3 +57,5 @@ export const { setField, calculateEmissionSecondary, resetDataSecondary } =
   SecondarySlice.actions;
 
 export default SecondarySlice.reducer;
+
+

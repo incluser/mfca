@@ -22,6 +22,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
   const dispatch = useDispatch();
   const [from, setFrom] = React.useState('');
   const [to, setTo] = React.useState('');
+  const [error, setError] = React.useState<string | null>(null)
   const flights = useSelector((state: RootState) => state.Airplane.flights);
   const flight = flights[index];
   const { t } = useTranslation()
@@ -63,18 +64,27 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
   };
 
   const fetchDistance = async (fromIata: string, toIata: string) => {
-    const response = await fetch('https://airportgap.com/api/airports/distance', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `from=${fromIata}&to=${toIata}`,
-    });
-    const data = await response.json();
-    const fromCity = data.data.attributes.from_airport.city;
-    const toCity = data.data.attributes.to_airport.city;
-    dispatch(updateFlight({ index, flight: { fromCity, toCity } }));
-    return data.data.attributes.kilometers;
+    try {
+      const response = await fetch('https://airportgap.com/api/airports/distance', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          "Authorization": "Bearer ShV6fdBqNK3sx9gDtaSCN8j9"
+        },
+        body: `from=${fromIata}&to=${toIata}`,
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch distance');
+      }
+      const data = await response.json();
+      const fromCity = data.data.attributes.from_airport.city;
+      const toCity = data.data.attributes.to_airport.city;
+      dispatch(updateFlight({ index, flight: { fromCity, toCity } }));
+      return data.data.attributes.kilometers;
+    } catch (error) {
+      setError("Invalid IATA code")
+      return
+    }
   };
 
   return (
@@ -89,7 +99,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
           <Icon as={FaPlaneDeparture} mr="2" />
 
           <Box as="span" mr="1" fontSize={17}>
-            {from.length === 3 && to.length === 3 && flight.fromCity}
+            {error ? t("Invalid IATA code") : from.length === 3 && flight.fromCity}
           </Box>
           <Input
             value={from}
@@ -103,7 +113,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
           </Box>
           <Icon as={FaPlaneArrival} mr="2" />{" "}
           <Box as="span" mr="1" fontSize={17}>
-            {from.length === 3 && to.length === 3 && flight.toCity}
+            {error ? t("Invalid IATA code") : from.length === 3 && to.length === 3 && flight.toCity}
           </Box>
           <Input
             value={to}

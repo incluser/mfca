@@ -8,6 +8,7 @@
   "kWh": "kWh",
   "kg": "kg",
   "m³": "m³",
+  "litres": "litres",
   "Electricity": "Electricity",
   "Natural Gas": "Natural Gas",
   "Biomass": "Biomass",
@@ -65,5 +66,6 @@
   "Departure IATA code": "Departure IATA code",
   "Arrival IATA code": "Arrival IATA code",
   "Class": "Class",
-  "Passengers": "Passengers"
+  "Passengers": "Passengers",
+  "Invalid IATA code": "Invalid IATA code"
 }
