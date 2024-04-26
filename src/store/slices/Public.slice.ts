@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PublicState } from "../../types/types";
-import { PublicTransportPayloadType } from "../../types/types";
+import { PrivateConversionFactors } from "../../constants/coefficents";
+import { PublicState, PublicTransportPayloadType } from "../../types/types";
+import { PublicTransportEmissionCoefficients } from "./../../constants/coefficents";
 const initialState: PublicState = {
   bus: {
     distance: 0,
@@ -25,22 +26,31 @@ const initialState: PublicState = {
   emissionResult: 0,
 };
 
-const conversionFactors = {
-  km: 1,
-  mile: 1.60934,
-};
-
 const calculateEmissionPublicHelper = (state: PublicState) => {
   const busEmission =
-    state.bus.distance * conversionFactors[state.bus.measure] * 0.089;
+    state.bus.distance *
+    PrivateConversionFactors[state.bus.measure] *
+    PublicTransportEmissionCoefficients.Bus;
+
   const trainEmission =
-    state.train.distance * conversionFactors[state.train.measure] * 0.041;
+    state.train.distance *
+    PrivateConversionFactors[state.train.measure] *
+    PublicTransportEmissionCoefficients.Train;
+
   const taxiEmission =
-    state.taxi.distance * conversionFactors[state.taxi.measure] * 0.183;
+    state.taxi.distance *
+    PrivateConversionFactors[state.taxi.measure] *
+    PublicTransportEmissionCoefficients.Taxi;
+
   const tramEmission =
-    state.tram.distance * conversionFactors[state.tram.measure] * 0.033;
+    state.tram.distance *
+    PrivateConversionFactors[state.tram.measure] *
+    PublicTransportEmissionCoefficients.Tram;
+
   const subwayEmission =
-    state.subway.distance * conversionFactors[state.subway.measure] * 0.038;
+    state.subway.distance *
+    PrivateConversionFactors[state.subway.measure] *
+    PublicTransportEmissionCoefficients.Subway;
 
   return (
     busEmission + trainEmission + taxiEmission + tramEmission + subwayEmission

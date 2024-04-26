@@ -5,10 +5,11 @@ import "./Airplane.css";
 import Cart from "./Cart";
 import { RootState } from "../../store/store";
 import { Flight } from "../../types/types";
+import { useTranslation } from "react-i18next";
 const Airplane = () => {
   const dispatch = useDispatch();
   const flights = useSelector((state: RootState) => state.Airplane.flights);
-
+  const { t } = useTranslation()
   const handleAddFlight = () => {
     dispatch(
       Actions.setFlight({
@@ -22,6 +23,7 @@ const Airplane = () => {
       })
     );
   };
+
 
   const handleRemoveFlight = (index: number) => {
     dispatch(Actions.removeFlight(index));
@@ -42,7 +44,7 @@ const Airplane = () => {
       </div>
       <div className="airplanebutton">
         <Button onClick={handleAddFlight} colorScheme="messenger">
-          Add Flight
+          {t("Add Flight")}
         </Button>
       </div>
     </div>

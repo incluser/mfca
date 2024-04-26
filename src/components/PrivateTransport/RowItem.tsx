@@ -13,12 +13,13 @@ import * as Actions from "../../store/slices/Private.slice";
 import { RootState } from "../../store/store";
 import { PrivatePayloadType, PrivateRowProps } from "../../types/types";
 import "../Household/Household.css";
+import { useTranslation } from "react-i18next";
 const RowItem = (props: PrivateRowProps) => {
   const [inputValue, setInputValue] = React.useState<string>("");
   const [selectedMeasure, setMeasure] = React.useState<number>(0);
   const dispatch = useDispatch();
   const initialState = useSelector((store: RootState) => store.Private);
-
+  const { t } = useTranslation()
   const handleInputChanges = (
     e: React.ChangeEvent<HTMLInputElement>,
     measure?: string
@@ -58,18 +59,18 @@ const RowItem = (props: PrivateRowProps) => {
 
   return (
     <div className="row">
-      <span>{props.field.text}</span>
+      <span>{t(props.field.text)}</span>
       <Input
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           handleInputChanges(e)
         }
         w={200}
         type="number"
-        placeholder="Amount"
+        placeholder={t("Amount")}
       />
       <Menu isLazy>
         <MenuButton as={Button}>
-          {props.field.measures[selectedMeasure]}
+          {t(props.field.measures[selectedMeasure])}
         </MenuButton>
         <MenuList>
           {props.field.measures.map((obj, index) => {
@@ -86,7 +87,7 @@ const RowItem = (props: PrivateRowProps) => {
                   );
                 }}
               >
-                {obj}
+                {t(obj)}
               </MenuItem>
             );
           })}
