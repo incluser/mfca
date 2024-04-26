@@ -83,7 +83,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
       setError(null);
       return data.data.attributes.kilometers;
     } catch (error) {
-      setError("Invalid IATA code")
+      setError("Invalid IATA code ")
       return
     }
   };
