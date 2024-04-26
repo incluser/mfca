@@ -8,14 +8,16 @@ import {
   MotorBikeFuelTypes,
 } from "../../constants/static";
 import Type from "./Type";
+import { useTranslation } from "react-i18next";
 const Private = () => {
+  const { t } = useTranslation()
   return (
     <div className="privatecontainer">
       <div className="car">
         <Box position="relative" padding="10">
           <Divider borderColor="#c9c9c9" />
           <AbsoluteCenter bg="white" px="4">
-            Car
+            {t('Car')}
           </AbsoluteCenter>
         </Box>
         <div className="privaterow ">
@@ -28,7 +30,7 @@ const Private = () => {
         <Box position="relative" padding="10">
           <Divider borderColor="#c9c9c9" />
           <AbsoluteCenter bg="white" px="4">
-            Motorcycle
+            {t('Motorcycle')}
           </AbsoluteCenter>
         </Box>
         <div className="privaterow ">

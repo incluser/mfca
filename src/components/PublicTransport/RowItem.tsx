@@ -12,12 +12,13 @@ import { useDispatch } from "react-redux";
 import * as Actions from "../../store/slices/Public.slice";
 import { PublicTransportPayloadType, RowProps } from "../../types/types";
 import "../Household/Household.css";
+import { useTranslation } from "react-i18next";
 
 const RowItem = (props: RowProps) => {
   const [inputValue, setInputValue] = React.useState<string>("");
   const [selectedMeasure, setMeasure] = React.useState<number>(0);
   const dispatch = useDispatch();
-
+  const { t } = useTranslation()
   const handleInputChanges = (
     e: React.ChangeEvent<HTMLInputElement>,
     measure?: string
@@ -50,18 +51,18 @@ const RowItem = (props: RowProps) => {
 
   return (
     <div className="row">
-      <span>{props.field.text}</span>
+      <span>{t(props.field.text)}</span>
       <Input
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           handleInputChanges(e)
         }
         w={200}
         type="number"
-        placeholder="Amount"
+        placeholder={t("Amount")}
       />
       <Menu isLazy>
         <MenuButton as={Button}>
-          {props.field.measures[selectedMeasure]}
+          {t(props.field.measures[selectedMeasure])}
         </MenuButton>
         <MenuList>
           {props.field.measures.map((obj, index) => {
@@ -78,7 +79,7 @@ const RowItem = (props: RowProps) => {
                   );
                 }}
               >
-                {obj}
+                {t(obj)}
               </MenuItem>
             );
           })}

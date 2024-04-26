@@ -17,8 +17,10 @@ import { calculateEmissionHouseHold, resetDataHousehold } from "./store/slices/H
 import { calculateEmissionPrivate, resetDataPrivate } from "./store/slices/Private.slice";
 import { calculateEmissionPublic, resetDataPublic } from "./store/slices/Public.slice";
 import { RootState } from "./store/store";
+import { useTranslation } from "react-i18next";
 function App() {
   const dispatch = useDispatch();
+  const { t } = useTranslation()
   const initialState = {
     airplane: 0,
     private: 0,
@@ -100,7 +102,7 @@ function App() {
                   >
                     <img className="tabicons" src={tab.img} alt={tab.text} />
                     <p style={{ fontSize: "12px", marginTop: "10px" }}>
-                      {tab.text}
+                      {t(tab.text)}
                     </p>
                   </div>
                 </Tab>
@@ -121,18 +123,18 @@ function App() {
                   );
                 })}
                 <div className="actions">
-                  <Button colorScheme="gray" onClick={resetCalculate}>Reset</Button>
+                  <Button colorScheme="gray" onClick={resetCalculate}>{t("Reset")}</Button>
                   <Button
                     colorScheme="teal"
                     onClick={handleCalculate}
                   >
-                    Calculate
+                    {t("Calculate")}
                   </Button>
                 </div>
               </TabPanels>
             </div>
             <div className="containerresult">
-              <h2>Emission Results</h2>
+              <h2>{t("Emission Results")}</h2>
               <ResultItem text="HouseHold" value={results.household} />
               <ResultItem text="Private Transport" value={results.private} />
               <ResultItem text="Airplane" value={results.airplane} />

@@ -11,6 +11,7 @@ import { updateFlight } from "../../store/slices/Airplane.slice";
 import "./Airplane.css";
 import CustomMenu from "./CustomMenu";
 import { RootState } from "../../store/store";
+import { useTranslation } from "react-i18next";
 
 type CartProps = {
   onRemove: () => void;
@@ -23,6 +24,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
   const [to, setTo] = React.useState('');
   const flights = useSelector((state: RootState) => state.Airplane.flights);
   const flight = flights[index];
+  const { t } = useTranslation()
   const handleChanges = async (value: string | number, eventtype: string) => {
     switch (eventtype) {
       case "from":
@@ -82,7 +84,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
       <div className="row">
         <Box display="block" p="2">
           <Box as="span" mr="1">
-            From
+            {t("From")}
           </Box>
           <Icon as={FaPlaneDeparture} mr="2" />
 
@@ -92,12 +94,12 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
           <Input
             value={from}
             onChange={(e) => handleChanges(e.target.value, 'from')}
-            placeholder="Departure IATA code"
+            placeholder={t("Departure IATA code")}
           />
         </Box>
         <Box display="block" p="1">
           <Box as="span" mr="2">
-            To
+            {t("To")}
           </Box>
           <Icon as={FaPlaneArrival} mr="2" />{" "}
           <Box as="span" mr="1" fontSize={17}>
@@ -106,7 +108,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
           <Input
             value={to}
             onChange={(e) => handleChanges(e.target.value, 'to')}
-            placeholder="Arrival IATA code"
+            placeholder={t("Arrival IATA code")}
           />
 
         </Box>
@@ -114,19 +116,19 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
       <div className="row" style={{ marginLeft: "10px", gap: "60px" }}>
         <CustomMenu
           options={FlightTripTypes}
-          placeholder="Flight"
+          placeholder={t("Flight")}
           label="Flight"
           onChange={(value) => handleChanges(value, "tripType")}
         />
         <CustomMenu
           options={FlightClass}
-          placeholder="Class"
+          placeholder={t("Class")}
           label="Class"
           onChange={(value) => handleChanges(value, "class")}
         />
         <CustomMenu
           options={FlightTripsNumber}
-          placeholder="Passengers"
+          placeholder={t("Passengers")}
           label="Passengers"
           onChange={(value) => handleChanges(value, "trips")}
         />

@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { SecondaryState } from "../../types/types";
+import { CarbonCoefficients } from "../../constants/coefficents";
 const initialState: SecondaryState = {
   eatingout: 0,
   carmaintaince: 0,
@@ -20,25 +21,7 @@ const initialState: SecondaryState = {
   other: 0,
   emissionResult: 0,
 };
-const carbonCoefficients: Record<string, number> = {
-  eatingout: 0.1,
-  carmaintaince: 0.2,
-  clothing: 0.3,
-  furniture: 0.4,
-  domesticwater: 0.5,
-  telephoneinternet: 0.6,
-  computerelectronics: 0.3,
-  electricalappliainces: 0.2,
-  postage: 0.4,
-  magazine: 0.1,
-  stationery: 0.1,
-  cleaning: 0.2,
-  hair: 0.3,
-  petfood: 0.4,
-  hotel: 0.5,
-  insurance: 0.4,
-  other: 0.2,
-};
+
 
 export const SecondarySlice = createSlice({
   name: "secondary",
@@ -53,7 +36,7 @@ export const SecondarySlice = createSlice({
         (acc, field) =>
           acc +
           (state[field as keyof SecondaryState] *
-            carbonCoefficients[field as keyof SecondaryState] || 0),
+            CarbonCoefficients[field as keyof SecondaryState] || 0),
         0
       );
     },
@@ -62,7 +45,7 @@ export const SecondarySlice = createSlice({
         (acc, field) =>
           acc +
           (state[field as keyof SecondaryState] *
-            carbonCoefficients[field as keyof SecondaryState] || 0),
+            CarbonCoefficients[field as keyof SecondaryState] || 0),
         0
       );
     },

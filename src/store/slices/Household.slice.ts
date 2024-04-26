@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { HouseHoldState } from "../../types/types";
+import {
+  HouseHoldConversionFactors,
+  HouseHoldEmissionFactors,
+} from "../../constants/coefficents";
 
 const initialState: HouseHoldState = {
   electricity: {
@@ -29,45 +33,30 @@ const initialState: HouseHoldState = {
   emissionResult: 0,
 };
 
-const emissionFactors = {
-  electricity: 0.25,
-  naturalgas: 0.0184,
-  biomass: 0.0025,
-  coal: 0.094,
-  heatingoil: 0.025,
-  lpg: 0.0214,
-};
-
-const conversionFactors = {
-  kWh: 3,
-  kg: 36,
-  "m³": 28,
-  litres: 28,
-};
-
 export const calculateEmission = (state: HouseHoldState) => {
   let totalEmission = 0;
-  totalEmission += state.electricity.amount * emissionFactors.electricity;
+  totalEmission +=
+    state.electricity.amount * HouseHoldEmissionFactors.electricity;
   totalEmission +=
     state.naturalgas.amount *
-    emissionFactors.naturalgas *
-    conversionFactors[state.naturalgas.measure];
+    HouseHoldEmissionFactors.naturalgas *
+    HouseHoldConversionFactors[state.naturalgas.measure];
   totalEmission +=
     state.biomass.amount *
-    emissionFactors.biomass *
-    conversionFactors[state.biomass.measure];
+    HouseHoldEmissionFactors.biomass *
+    HouseHoldConversionFactors[state.biomass.measure];
   totalEmission +=
     state.coal.amount *
-    emissionFactors.coal *
-    conversionFactors[state.coal.measure];
+    HouseHoldEmissionFactors.coal *
+    HouseHoldConversionFactors[state.coal.measure];
   totalEmission +=
     state.heatingoil.amount *
-    emissionFactors.heatingoil *
-    conversionFactors[state.heatingoil.measure];
+    HouseHoldEmissionFactors.heatingoil *
+    HouseHoldConversionFactors[state.heatingoil.measure];
   totalEmission +=
     state.lpg.amount *
-    emissionFactors.lpg *
-    conversionFactors[state.lpg.measure];
+    HouseHoldEmissionFactors.lpg *
+    HouseHoldConversionFactors[state.lpg.measure];
 
   return totalEmission;
 };

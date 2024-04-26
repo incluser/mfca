@@ -4,10 +4,11 @@ import { TypeProps } from "../../types/types";
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as Actions from "../../store/slices/Private.slice";
+import { useTranslation } from "react-i18next";
 const Type = (props: TypeProps) => {
   const dispatch = useDispatch();
   const [selectedType, setSelectedType] = React.useState<number>(0);
-
+  const { t } = useTranslation();
   const handleTypeChange = (index: number) => {
     setSelectedType(index);
     if (props.vehicle === "car" && props.text === "Car Type") {
@@ -22,14 +23,14 @@ const Type = (props: TypeProps) => {
   };
   return (
     <div className="row private">
-      <span>{props.text}</span>
+      <span>{t(props.text)}</span>
       <Menu isLazy>
-        <MenuButton as={Button}>{props.measures[selectedType]}</MenuButton>
+        <MenuButton as={Button}>{t(props.measures[selectedType])}</MenuButton>
         <MenuList>
           {props.measures.map((measure, index) => {
             return (
               <MenuItem key={index} onClick={() => handleTypeChange(index)}>
-                {measure}
+                {t(measure)}
               </MenuItem>
             );
           })}

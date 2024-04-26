@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FaCaretDown } from "react-icons/fa";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type CustomMenuProps = {
   options: string[] | number[];
@@ -28,7 +29,7 @@ const CustomMenu: React.FC<CustomMenuProps> = ({
   onChange,
 }) => {
   const [selectedOption, setSelectedOption] = useState<number | string>(placeholder);
-
+  const { t } = useTranslation()
   const handleSelectOption = (option: string | number) => {
     setSelectedOption(option);
     onChange(option);
@@ -37,7 +38,7 @@ const CustomMenu: React.FC<CustomMenuProps> = ({
   return (
     <VStack align="start" spacing={1}>
       <Flex align="center">
-        <Box as="span">{label}</Box>
+        <Box as="span">{t(label)}</Box>
         {showDropdownIcon && <Icon as={FaCaretDown} ml={2} />}
       </Flex>
       <Menu>
@@ -52,12 +53,12 @@ const CustomMenu: React.FC<CustomMenuProps> = ({
           bg="#f0f0f0"
           boxShadow="1px 1px 1px #d6d6d6 "
         >
-          {selectedOption || placeholder}
+          {t(selectedOption as string) || placeholder}
         </MenuButton>
         <MenuList>
           {options.map((option, index) => (
             <MenuItem key={index} onClick={() => handleSelectOption(option)}>
-              {option}
+              {t(option as string)}
             </MenuItem>
           ))}
         </MenuList>

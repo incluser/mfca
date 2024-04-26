@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PrivateState } from "../../types/types";
+import {
+  PrivateCarTypeEmissionCoefficents,
+  PrivateConversionFactors,
+  PrivateEmissionFactors,
+} from "../../constants/coefficents";
 
 const initialState: PrivateState = {
   car: {
@@ -16,33 +21,16 @@ const initialState: PrivateState = {
   emissionResult: 0,
 };
 
-const conversionFactors = {
-  km: 1,
-  mile: 1.60934,
-};
-
 const calculateEmissionPrivateHelper = (state: PrivateState) => {
-  const emissionFactors = {
-    car: {
-      Petrol: 2.31,
-      Diesel: 2.68,
-      Electricity: 0.17,
-      Hybrid: 1.73,
-    },
-    motorcycle: {
-      Petrol: 2.31,
-      Diesel: 2.68,
-      Electricity: 0.17,
-    },
-  };
   const carEmission =
-    ((state.car.distance * conversionFactors[state.car.measure]) / 100) *
-    emissionFactors.car[state.car.fuel] *
-    (state.car.type === "Small" ? 1 : state.car.type === "Medium" ? 1.2 : 1.4);
+    ((state.car.distance * PrivateConversionFactors[state.car.measure]) / 100) *
+    PrivateEmissionFactors.car[state.car.fuel] *
+    (PrivateCarTypeEmissionCoefficents[state.car.type] / 1000);
   const motorcycleEmission =
-    ((state.motorcycle.distance * conversionFactors[state.motorcycle.measure]) /
+    ((state.motorcycle.distance *
+      PrivateConversionFactors[state.motorcycle.measure]) /
       100) *
-    emissionFactors.motorcycle[state.motorcycle.fuel];
+    PrivateEmissionFactors.motorcycle[state.motorcycle.fuel];
   return carEmission + motorcycleEmission;
 };
 
