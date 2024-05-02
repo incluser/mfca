@@ -23,14 +23,16 @@ const initialState: PrivateState = {
 
 const calculateEmissionPrivateHelper = (state: PrivateState) => {
   const carEmission =
-    ((state.car.distance * PrivateConversionFactors[state.car.measure]) / 100) *
-    PrivateEmissionFactors.car[state.car.fuel] *
-    (PrivateCarTypeEmissionCoefficents[state.car.type] / 1000);
+    state.car.distance *
+    PrivateConversionFactors[state.car.measure] *
+    PrivateCarTypeEmissionCoefficents[state.car.type] *
+    PrivateEmissionFactors.car[state.car.fuel];
+
   const motorcycleEmission =
-    ((state.motorcycle.distance *
-      PrivateConversionFactors[state.motorcycle.measure]) /
-      100) *
+    state.motorcycle.distance *
+    PrivateConversionFactors[state.motorcycle.measure] *
     PrivateEmissionFactors.motorcycle[state.motorcycle.fuel];
+
   return carEmission + motorcycleEmission;
 };
 
