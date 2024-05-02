@@ -41,7 +41,6 @@ function App() {
     dispatch(calculateEmissionAirplane());
     dispatch(calculateEmissionPublic());
     dispatch(calculateEmissionHouseHold());
-    // dispatch(calculateEmissionSecondary());
     dispatch(calculateEmissionPrivate());
     setResults({
       airplane: airplaneEmission,
@@ -65,10 +64,7 @@ function App() {
     dispatch(resetDataHousehold())
     dispatch(resetDataPrivate())
     dispatch(resetDataPublic())
-    // dispatch(resetDataSecondary())
     setResetKey(prev => prev + 1)
-
-
   }
 
   return (
@@ -139,7 +135,6 @@ function App() {
               <ResultItem text="Private Transport" value={results.private} />
               <ResultItem text="Airplane" value={results.airplane} />
               <ResultItem text="Public Transport" value={results.public} />
-              {/* <ResultItem text="Secondary" value={results.secondary} /> */}
               <ResultItem text="Overall" value={results.secondary + results.airplane + results.household + results.public + results.private} />
             </div>
           </div>
