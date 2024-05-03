@@ -79,7 +79,7 @@ function App() {
             gap={20}
             border="1px solid #dfdfdf"
             padding={5}
-            borderRadius={30}
+            borderRadius={15}
             bg="aliceblue"
           >
             {TabsData.map((tab) => {

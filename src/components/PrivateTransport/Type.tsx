@@ -18,7 +18,7 @@ const Type = (props: TypeProps) => {
       dispatch(Actions.setCar({ fuel: props.measures[index] }));
     }
     if (props.vehicle === "motorcycle") {
-      dispatch(Actions.setMotorcycle({ fuel: props.measures[index] }));
+      dispatch(Actions.setMotorcycle({ type: props.measures[index] }));
     }
   };
   return (

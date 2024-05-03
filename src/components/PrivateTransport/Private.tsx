@@ -1,14 +1,14 @@
 import { AbsoluteCenter, Box, Divider } from "@chakra-ui/react";
-import RowItem from "./RowItem";
-import "./Private.css";
+import { useTranslation } from "react-i18next";
 import {
+  CarFuelTypes,
   CarTypes,
   DistanceFields,
-  CarFuelTypes,
-  MotorBikeFuelTypes,
+  MotorcycleTypes
 } from "../../constants/static";
+import "./Private.css";
+import RowItem from "./RowItem";
 import Type from "./Type";
-import { useTranslation } from "react-i18next";
 const Private = () => {
   const { t } = useTranslation()
   return (
@@ -35,7 +35,7 @@ const Private = () => {
         </Box>
         <div className="privaterow ">
           <RowItem field={DistanceFields} vehicle="motorcycle" />
-          <Type {...MotorBikeFuelTypes} vehicle="motorcycle" />
+          <Type {...MotorcycleTypes} vehicle="motorcycle" />
         </div>
       </div>
     </div>

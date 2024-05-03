@@ -38,14 +38,14 @@
   width: 70%;
   border: 1px solid #dfdfdf;
   padding: 5px;
-  border-radius: 30px;
+  border-radius: 15px;
   background-color: rgb(251, 251, 251);
 }
 
 .containerresult {
   border: 1px solid #dfdfdf;
   padding: 5px;
-  border-radius: 30px;
+  border-radius: 15px;
   width: 30%;
 
   padding: 20px;
