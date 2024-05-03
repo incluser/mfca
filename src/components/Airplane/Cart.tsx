@@ -125,6 +125,7 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
         </Box>
       </div>
       <div className="row" style={{ marginLeft: "10px", gap: "60px" }}>
+
         <CustomMenu
           options={FlightTripTypes}
           placeholder={t("Flight")}
@@ -149,3 +150,5 @@ const Cart: React.FC<CartProps> = ({ onRemove, index }) => {
 };
 
 export default Cart;
+
+

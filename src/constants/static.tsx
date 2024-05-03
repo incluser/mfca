@@ -10,7 +10,7 @@ import * as Components from "../components/index";
 export const TabsData: Tabs = [
   {
     id: 0,
-    text: "HouseHold",
+    text: "House Factors",
     img: House,
     Component: Components.Household,
   },
@@ -22,7 +22,7 @@ export const TabsData: Tabs = [
   },
   {
     id: 2,
-    text: "Airplane",
+    text: "Airplane Flights",
     img: Plane,
     Component: Components.Airplane,
   },
@@ -104,11 +104,16 @@ export const CarTypes = {
   vehicle: "car",
   measures: ["Small", "Medium", "Large"],
 };
+export const MotorcycleTypes = {
+  text: "Motorcycle Type",
+  vehicle: "motorcycle",
+  measures: ["Small", "Medium", "Large"],
+};
 
 export const MotorBikeFuelTypes = {
   text: "Motorcycle Fuel Type",
   vehicle: "motorcycle",
-  measures: ["Petrol", "Diesel", "Electricity"],
+  measures: ["Petrol", "Electricity"],
 };
 
 export const FlightTripTypes: string[] = ["one-way", "round-trip"];

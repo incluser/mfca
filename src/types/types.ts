@@ -52,7 +52,7 @@ export interface PrivateState {
   motorcycle: {
     distance: number;
     measure: "km" | "mile";
-    fuel: "Petrol" | "Diesel" | "Electricity";
+    type: MotorcycleTypes;
   };
   emissionResult: number;
 }
@@ -178,3 +178,5 @@ export type ResultItemProps = {
   text: string;
   value: number;
 };
+
+export type MotorcycleTypes = "Small" | "Medium" | "Large";

@@ -19,20 +19,19 @@ export const CarbonCoefficients: Record<string, number> = {
 };
 
 export const FlightEmissionFactors: Record<string, number> = {
-  economy: 0.123,
-  business: 0.123 * 2.5,
-  first: 0.123 * 4,
+  economy: 0.13397,
+  business: 0.3885,
+  first: 0.53587,
 };
 
 export const HouseHoldEmissionFactors = {
-  electricity: 0.25,
+  electricity: 0.6499459915,
   naturalgas: 0.0184,
   biomass: 0.0025,
   coal: 0.094,
   heatingoil: 0.025,
   lpg: 0.0214,
 };
-
 export const HouseHoldConversionFactors = {
   kWh: 3,
   kg: 36,
@@ -47,28 +46,40 @@ export const PrivateConversionFactors = {
 
 export const PrivateEmissionFactors = {
   car: {
-    Petrol: 2.31,
-    Diesel: 2.68,
-    Electricity: 0.17,
-    Hybrid: 1.73,
+    Diesel: {
+      Small: 0.13763,
+      Medium: 0.16548,
+      Large: 0.20691,
+    },
+
+    Petrol: {
+      Small: 0.14012,
+      Medium: 0.17751,
+      Large: 0.27156,
+    },
+    Electricity: {
+      //Fake coefficents cause there's no data for electric cars
+      Small: 0.13763,
+      Medium: 0.2,
+      Large: 0.4,
+    },
+    Hybrid: {
+      Small: 0.10049,
+      Medium: 0.10783,
+      Large: 0.15101,
+    },
   },
   motorcycle: {
-    Petrol: 2.31,
-    Diesel: 2.68,
-    Electricity: 0.17,
+    Small: 0.08094,
+    Medium: 0.09826,
+    Large: 0.13072,
   },
 };
 
 export const PublicTransportEmissionCoefficients = {
-  Bus: 0.089,
-  Train: 0.041,
-  Taxi: 0.183,
-  Tram: 0.038,
-  Subway: 0.5,
-};
-
-export const PrivateCarTypeEmissionCoefficents = {
-  Small: 1,
-  Medium: 1.2,
-  Large: 1.4,
+  Bus: 0.10141,
+  Train: 0.0351,
+  Taxi: 0.17751,
+  Tram: 0.02832,
+  Subway: 0.02753,
 };

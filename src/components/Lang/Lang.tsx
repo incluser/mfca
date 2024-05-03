@@ -18,7 +18,7 @@ const Lang = () => {
         as={Button}
         colorScheme="blue"
         padding={30}
-        borderRadius={10}
+        borderRadius={15}
         bg="#c8e9f9"
         color="black"
       >
