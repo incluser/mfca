@@ -36,10 +36,10 @@ const Welcome = () => {
             </div>
             <div className="date-container">
                 <div className="welcome-date from">
-                    <span>From</span>
+                    <span>{t("From Time")}</span>
                     <DatePicker
                         className="date-picker"
-                        locale={currentLanguage === 'RU' ? 'ru' : 'es'}
+                        locale={currentLanguage == 'EN' ? 'es' : 'ru'}
                         selected={start}
                         onChange={(date: Date) => {
                             setStart(date)
@@ -48,10 +48,10 @@ const Welcome = () => {
                     />
                 </div>
                 <div className="welcome-date to">
-                    <span>To</span>
+                    <span>{t("To Time")}</span>
                     <DatePicker
                         className="date-picker"
-                        locale={currentLanguage === 'RU' ? 'ru' : 'es'}
+                        locale={currentLanguage === 'EN' ? 'es' : 'ru'}
                         selected={end}
                         onChange={(date: Date) => {
                             setEnd(date)
