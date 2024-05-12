@@ -24,6 +24,7 @@ const Type = (props: TypeProps) => {
   return (
     <div className="row private">
       <span>{t(props.text)}</span>
+     
       <Menu isLazy>
         <MenuButton as={Button}>{t(props.measures[selectedType])}</MenuButton>
         <MenuList>

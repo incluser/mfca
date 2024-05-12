@@ -12,6 +12,7 @@ import {
 import { FaCaretDown } from "react-icons/fa";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FlightClass } from "../../constants/static";
 
 type CustomMenuProps = {
   options: string[] | number[];
@@ -53,12 +54,12 @@ const CustomMenu: React.FC<CustomMenuProps> = ({
           bg="#f0f0f0"
           boxShadow="1px 1px 1px #d6d6d6 "
         >
-          {t(selectedOption as string) || placeholder}
+          {selectedOption === FlightClass[1] ? (t("premium economy") || placeholder) : t(selectedOption as string) || placeholder}
         </MenuButton>
         <MenuList>
           {options.map((option, index) => (
             <MenuItem key={index} onClick={() => handleSelectOption(option)}>
-              {t(option as string)}
+              {option === "premium_economy" ? t("premium economy") : t(option as string)}
             </MenuItem>
           ))}
         </MenuList>
