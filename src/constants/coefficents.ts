@@ -20,6 +20,7 @@ export const CarbonCoefficients: Record<string, number> = {
 
 export const FlightEmissionFactors: Record<string, number> = {
   economy: 0.13397,
+  premium_economy: 0.21435,
   business: 0.3885,
   first: 0.53587,
 };
@@ -50,29 +51,46 @@ export const PrivateEmissionFactors = {
       Small: 0.13763,
       Medium: 0.16548,
       Large: 0.20691,
+      Average: 0.16815,
     },
 
     Petrol: {
       Small: 0.14012,
       Medium: 0.17751,
       Large: 0.27156,
+      Average: 0.16323,
     },
     Electricity: {
       //Fake coefficents cause there's no data for electric cars
       Small: 0.13763,
       Medium: 0.2,
       Large: 0.4,
+      Average: 0.14323,
     },
     Hybrid: {
       Small: 0.10049,
       Medium: 0.10783,
       Large: 0.15101,
+      Average: 0.11781,
+    },
+    CNG: {
+      Small: 0.10049, //fake
+      Medium: 0.15447,
+      Large: 0.23632,
+      Average: 0.17291,
+    },
+    LPG: {
+      Small: 0.10049, //fake
+      Medium: 0.17565,
+      Large: 0.26872,
+      Average: 0.19662,
     },
   },
   motorcycle: {
     Small: 0.08094,
     Medium: 0.09826,
     Large: 0.13072,
+    Average: 0.11138,
   },
 };
 

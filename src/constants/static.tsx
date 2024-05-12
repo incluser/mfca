@@ -2,6 +2,7 @@ import Plane from "../assets/img/airplane-departure-svgrepo-com.svg";
 import Car from "../assets/img/car-svgrepo-com.svg";
 import House from "../assets/img/house-svgrepo-com.svg";
 import Train from "../assets/img/train-svgrepo-com.svg";
+import Leaf from "../assets/img/leaf-svgrepo-com.svg"
 import { DistanceMeasures, Label, Tabs } from "../types/types";
 // import Secondary from "../assets/img/money-bag-svgrepo-com.svg";
 
@@ -10,30 +11,36 @@ import * as Components from "../components/index";
 export const TabsData: Tabs = [
   {
     id: 0,
+    text: "Carbon Footprint",
+    img: Leaf,
+    Component: Components.Welcome,
+  },
+  {
+    id: 1,
     text: "House Factors",
     img: House,
     Component: Components.Household,
   },
   {
-    id: 1,
+    id: 2,
     text: "Private Transport",
     img: Car,
     Component: Components.Private,
   },
   {
-    id: 2,
+    id: 3,
     text: "Airplane Flights",
     img: Plane,
     Component: Components.Airplane,
   },
   {
-    id: 3,
+    id: 4,
     text: "Public Transport",
     img: Train,
     Component: Components.Public,
   },
   // {
-  //   id: 4,
+  //   id: 5,
   //   text: "Secondary",
   //   img: Secondary,
   //   Component: Components.Secondary,
@@ -96,29 +103,25 @@ export const DistanceFields = { text: "Distance", measures: ["km", "mile"] };
 
 export const CarFuelTypes = {
   text: "Car Fuel Type",
-  measures: ["Petrol", "Diesel", "Hybrid", "Electricity"],
+  measures: ["Petrol", "Diesel", "Hybrid", "Electricity", "CNG", "LPG"],
 };
 
 export const CarTypes = {
   text: "Car Type",
   vehicle: "car",
-  measures: ["Small", "Medium", "Large"],
+  measures: ["Small", "Medium", "Large", "Average"],
 };
 export const MotorcycleTypes = {
   text: "Motorcycle Type",
   vehicle: "motorcycle",
-  measures: ["Small", "Medium", "Large"],
+  measures: ["Small", "Medium", "Large", "Average"],
 };
 
-export const MotorBikeFuelTypes = {
-  text: "Motorcycle Fuel Type",
-  vehicle: "motorcycle",
-  measures: ["Petrol", "Electricity"],
-};
+
 
 export const FlightTripTypes: string[] = ["one-way", "round-trip"];
 
-export const FlightClass: string[] = ["economy", "business", "first"];
+export const FlightClass: string[] = ["economy", "premium_economy", "business", "first"];
 
 export const FlightTripsNumber: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -131,18 +134,18 @@ export const PublicTransport: Array<{ text: string; measures: string[] }> = [
     text: "Train",
     measures: ["km", "mile"],
   },
-  {
-    text: "Taxi",
-    measures: ["km", "mile"],
-  },
-  {
-    text: "Tram",
-    measures: ["km", "mile"],
-  },
-  {
-    text: "Subway",
-    measures: ["km", "mile"],
-  },
+  // {
+  //   text: "Taxi",
+  //   measures: ["km", "mile"],
+  // },
+  // {
+  //   text: "Tram",
+  //   measures: ["km", "mile"],
+  // },
+  // {
+  //   text: "Subway",
+  //   measures: ["km", "mile"],
+  // },
 ];
 
 export const SecondaryLabels: Label[] = [

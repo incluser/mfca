@@ -3,7 +3,7 @@ import {
   PrivateConversionFactors,
   PrivateEmissionFactors,
 } from "../../constants/coefficents";
-import { MotorcycleTypes, PrivateState } from "../../types/types";
+import { VehicleTypes, PrivateState } from "../../types/types";
 
 const initialState: PrivateState = {
   car: {
@@ -29,7 +29,7 @@ const calculateEmissionPrivateHelper = (state: PrivateState) => {
   const motorcycleEmission =
     state.motorcycle.distance *
     PrivateConversionFactors[state.motorcycle.measure] *
-    PrivateEmissionFactors.motorcycle[state.motorcycle.type as MotorcycleTypes];
+    PrivateEmissionFactors.motorcycle[state.motorcycle.type as VehicleTypes];
 
   return carEmission + motorcycleEmission;
 };
