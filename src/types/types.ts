@@ -1,3 +1,4 @@
+import { CarFuelTypes } from "./../constants/static";
 export type Tabs = Array<{
   id: number;
   text: string;
@@ -46,13 +47,13 @@ export interface PrivateState {
   car: {
     distance: number;
     measure: "km" | "mile";
-    fuel: "Petrol" | "Diesel" | "Electricity" | "Hybrid";
-    type: "Small" | "Medium" | "Large";
+    fuel: CarFuelTypes;
+    type: VehicleTypes;
   };
   motorcycle: {
     distance: number;
     measure: "km" | "mile";
-    type: MotorcycleTypes;
+    type: VehicleTypes;
   };
   emissionResult: number;
 }
@@ -92,7 +93,7 @@ export type AirplaneState = {
     to: string;
     fromCity: string;
     toCity: string;
-    flightClass: "economy" | "business" | "first";
+    flightClass: FlightClass;
     tripType: "one-way" | "round-trip";
     trips: number;
     emissionResult: number;
@@ -104,7 +105,7 @@ export type Flight = {
   distance: number;
   from: string;
   to: string;
-  flightClass: "economy" | "business" | "first";
+  flightClass: FlightClass;
   tripType: "one-way" | "round-trip";
   trips: number;
   emissionResult: number;
@@ -112,7 +113,7 @@ export type Flight = {
 
 export type FlightTripType = "one-way" | "round-trip";
 
-export type FlightClass = "economy" | "business" | "first";
+export type FlightClass = "economy" | "business" | "first" | "premium_economy";
 
 export type CustomMenuProps = {
   options: string[] | number[];
@@ -179,4 +180,11 @@ export type ResultItemProps = {
   value: number;
 };
 
-export type MotorcycleTypes = "Small" | "Medium" | "Large";
+export type VehicleTypes = "Small" | "Medium" | "Large" | "Average";
+export type CarFuelTypes =
+  | "Petrol"
+  | "Diesel"
+  | "Electricity"
+  | "Hybrid"
+  | "LPG"
+  | "CNG";

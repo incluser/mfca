@@ -1,8 +1,13 @@
 {
-  "HouseHold": "Үй ішіндегі",
+  "Welcome to the carbon footprint calculator": "Көміртек ізі калкуляторына қош келдіңіз",
+  "House Factors": "Үй ішіндегі",
+  "Carbon footprint calculations are typically based on annual emissions from the previous 12 months Enter the period this calculation covers (optional):": "Көміртегі ізінің есептемесі әдетте алдыңғы 12 айдан басталады. Бұл есептеменің қамтылған уақытын енгізіңіз (міндетті емес):",
+  "HouseHold": "Үй",
+  "Carbon Footprint": "Көміртегі ізі",
   "Private Transport": "Жеке көлік",
-  "Airplane": "Ұшақ",
+  "Airplane Flights": "Ұшақ",
   "Public Transport": "Қоғамдық көлік",
+  "Airplane": "Ұшақ",
   "km": "км",
   "mile": "миля",
   "kWh": "кВт·сағ",
@@ -27,7 +32,8 @@
   "Motorcycle Fuel Type": "Мотоцикл топырағының түрі",
   "one-way": "бір жақты",
   "round-trip": "болып отырған",
-  "economy": "экономика",
+  "economy": "эконом",
+  "premium economy": "премиум эконом",
   "business": "бизнес",
   "first": "бірінші",
   "Bus": "Автобус",
@@ -60,6 +66,7 @@
   "Amount": "Сомасы",
   "Car": "Көлік",
   "Motorcycle": "Мотоцикл",
+  "Motorcycle Type": "Мотоцикл түрі",
   "Departure IATA code": "Ұшу IATA коды",
   "Arrival IATA code": "Келу IATA коды",
   "From": "Қайдан",
@@ -67,5 +74,6 @@
   "Flight": "Ұшу",
   "Class": "Класс",
   "Passengers": "Жолаушылар",
-  "Invalid IATA code":"Жарамсыз IATA коды"
+  "Invalid IATA code": "Жарамсыз IATA коды",
+  "CNG": "Табиғи газ"
 }
