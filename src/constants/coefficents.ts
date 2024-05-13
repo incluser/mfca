@@ -27,7 +27,7 @@ export const FlightEmissionFactors: Record<string, number> = {
 
 export const HouseHoldEmissionFactors = {
   electricity: 0.6499459915,
-  naturalgas: 0.0184,
+  naturalgas: 0.18256,
   biomass: 0.0025,
   coal: 0.094,
   heatingoil: 0.025,
