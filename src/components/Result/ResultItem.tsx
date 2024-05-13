@@ -8,7 +8,7 @@ const ResultItem: React.FC<ResultItemProps> = ({ text, value }) => {
     return (
         <div className="rowresult">
             <span>{t(text)}</span>
-            <p>{value.toFixed(2)} {t('kg')} CO₂</p>
+            <p>{(value / 1000).toFixed(2)} {t('ton')} CO₂</p>
         </div>
     )
 }

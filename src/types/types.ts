@@ -22,23 +22,27 @@ export interface HouseHoldState {
   };
   naturalgas: {
     amount: number;
-    measure: "kWh" | "kg" | "m³";
+    measure: "kWh";
   };
-  biomass: {
+  gasoil: {
     amount: number;
-    measure: "kWh" | "kg";
+    measure: "litres";
   };
   coal: {
     amount: number;
-    measure: "kWh" | "kg";
+    measure: "tonnes";
   };
-  heatingoil: {
+  woodchips: {
     amount: number;
-    measure: "kWh" | "kg" | "litres";
+    measure: "tonnes";
   };
-  lpg: {
+  propane: {
     amount: number;
-    measure: "kWh" | "kg" | "litres";
+    measure: "litres";
+  };
+  butane: {
+    amount: number;
+    measure: "litres";
   };
   emissionResult: number;
 }
