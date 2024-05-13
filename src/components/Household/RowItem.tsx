@@ -29,12 +29,13 @@ const RowItem = (props: RowProps) => {
       string,
       (value: PayloadType) => PayloadAction<PayloadType>
     > = {
-      Electricity: Actions.setElectricity,
+      "Electricity": Actions.setElectricity,
       "Natural Gas": Actions.setNaturalGas,
-      Biomass: Actions.setBiomass,
-      Coal: Actions.setCoal,
-      "Heating Oil": Actions.setHeatingOil,
-      LPG: Actions.setLPG,
+      "Gas Oil": Actions.setGasoil,
+      "Coal": Actions.setCoal,
+      "Wood chips": Actions.setWoodChips,
+      "Propane": Actions.setPropane,
+      "Butane": Actions.setButane
     };
 
     const action = actionMap[props.field.text];

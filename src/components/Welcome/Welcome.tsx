@@ -28,6 +28,9 @@ const Welcome = () => {
                 <div className="welcome-text">
                     <span className="welcome-title">{t("Welcome to the carbon footprint calculator")}</span>
                     <span className="weclome-subtitle" style={{ marginTop: "20px" }}>
+                        <span>{t("Carbon footprint calculations are typically based on annual emissions over the previous 12 months.")}</span>
+                        <br />
+                        <br />
                         {
                             t("Next, select the appropriate tab above to calculate emissions for the aspect of life you're interested in, such as air travel.Or complete each tab to determine your full carbon footprint.:")
                         }
