@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { HouseHoldState } from "../../types/types";
-import {
-  HouseHoldConversionFactors,
-  HouseHoldEmissionFactors,
-} from "../../constants/coefficents";
+import { HouseHoldEmissionFactors } from "../../constants/coefficents";
 
 const initialState: HouseHoldState = {
   electricity: {
@@ -14,21 +11,25 @@ const initialState: HouseHoldState = {
     amount: 0,
     measure: "kWh",
   },
-  biomass: {
+  gasoil: {
     amount: 0,
-    measure: "kWh",
+    measure: "litres",
   },
   coal: {
     amount: 0,
-    measure: "kWh",
+    measure: "tonnes",
   },
-  heatingoil: {
+  woodchips: {
     amount: 0,
-    measure: "kWh",
+    measure: "tonnes",
   },
-  lpg: {
+  propane: {
     amount: 0,
-    measure: "kWh",
+    measure: "litres",
+  },
+  butane: {
+    amount: 0,
+    measure: "litres",
   },
   emissionResult: 0,
 };
@@ -38,25 +39,12 @@ export const calculateEmission = (state: HouseHoldState) => {
   totalEmission +=
     state.electricity.amount * HouseHoldEmissionFactors.electricity;
   totalEmission +=
-    state.naturalgas.amount *
-    HouseHoldEmissionFactors.naturalgas *
-    HouseHoldConversionFactors[state.naturalgas.measure];
-  totalEmission +=
-    state.biomass.amount *
-    HouseHoldEmissionFactors.biomass *
-    HouseHoldConversionFactors[state.biomass.measure];
-  totalEmission +=
-    state.coal.amount *
-    HouseHoldEmissionFactors.coal *
-    HouseHoldConversionFactors[state.coal.measure];
-  totalEmission +=
-    state.heatingoil.amount *
-    HouseHoldEmissionFactors.heatingoil *
-    HouseHoldConversionFactors[state.heatingoil.measure];
-  totalEmission +=
-    state.lpg.amount *
-    HouseHoldEmissionFactors.lpg *
-    HouseHoldConversionFactors[state.lpg.measure];
+    state.naturalgas.amount * HouseHoldEmissionFactors.naturalgas;
+  totalEmission += state.gasoil.amount * HouseHoldEmissionFactors.gasoil;
+  totalEmission += state.coal.amount * HouseHoldEmissionFactors.coal;
+  totalEmission += state.woodchips.amount * HouseHoldEmissionFactors.woodchips;
+  totalEmission += state.propane.amount * HouseHoldEmissionFactors.propane;
+  totalEmission += state.butane.amount * HouseHoldEmissionFactors.butane;
 
   return totalEmission;
 };
@@ -73,20 +61,24 @@ export const HouseHoldSlice = createSlice({
       state.naturalgas = action.payload;
       state.emissionResult = calculateEmission(state);
     },
-    setBiomass: (state, action) => {
-      state.biomass = action.payload;
+    setGasoil: (state, action) => {
+      state.gasoil = action.payload;
       state.emissionResult = calculateEmission(state);
     },
     setCoal: (state, action) => {
       state.coal = action.payload;
       state.emissionResult = calculateEmission(state);
     },
-    setHeatingOil: (state, action) => {
-      state.heatingoil = action.payload;
+    setWoodChips: (state, action) => {
+      state.woodchips = action.payload;
       state.emissionResult = calculateEmission(state);
     },
-    setLPG: (state, action) => {
-      state.lpg = action.payload;
+    setPropane: (state, action) => {
+      state.propane = action.payload;
+      state.emissionResult = calculateEmission(state);
+    },
+    setButane: (state, action) => {
+      state.butane = action.payload;
       state.emissionResult = calculateEmission(state);
     },
     calculateEmissionHouseHold: (state) => {
@@ -101,10 +93,11 @@ export const HouseHoldSlice = createSlice({
 export const {
   setElectricity,
   setNaturalGas,
-  setBiomass,
+  setGasoil,
   setCoal,
-  setHeatingOil,
-  setLPG,
+  setWoodChips,
+  setPropane,
+  setButane,
   calculateEmissionHouseHold,
   resetDataHousehold,
 } = HouseHoldSlice.actions;

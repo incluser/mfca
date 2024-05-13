@@ -79,23 +79,27 @@ export const Fields: Array<{ text: string; measures: string[] }> = [
   },
   {
     text: "Natural Gas",
-    measures: ["kWh", "kg", "m³"],
+    measures: ["kWh"],
   },
   {
-    text: "Biomass",
-    measures: ["kWh", "kg"],
+    text: "Gas Oil",
+    measures: ["litres"],
   },
   {
     text: "Coal",
-    measures: ["kWh", "kg"],
+    measures: ["tonnes"],
   },
   {
-    text: "Heating Oil",
-    measures: ["kWh", "kg", "litres"],
+    text: "Wood chips",
+    measures: ["tonnes"],
   },
   {
-    text: "LPG",
-    measures: ["kWh", "kg", "litres"],
+    text: "Propane",
+    measures: ["litres"],
+  },
+  {
+    text: "Butane",
+    measures: ["litres"],
   },
 ];
 
